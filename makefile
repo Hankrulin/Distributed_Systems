@@ -8,7 +8,16 @@ SOURCES = Calculator.java CalculatorImplementation.java CalculatorServer.java Ca
 CLASSES = $(SOURCES:.java=.class)
 
 # Default target: compile all Java files
-all: $(CLASSES)
+all: check_files $(CLASSES)
+
+# Check if all source files exist
+check_files:
+	@for src in $(SOURCES); do \
+		if [ ! -f "$$src" ]; then \
+			echo "Error: Source file $$src not found"; \
+			exit 1; \
+		fi; \
+	done
 
 # Rule to compile .java files to .class files
 %.class: %.java
@@ -28,11 +37,13 @@ client: $(CLASSES)
 
 # Run multiple clients for testing
 multiclients: $(CLASSES)
-	$(JAVA) -Djava.security.policy=policy.all CalculatorClient & $(JAVA) -Djava.security.policy=policy.all CalculatorClient & $(JAVA) -Djava.security.policy=policy.all CalculatorClient
+	$(JAVA) -Djava.security.policy=policy.all CalculatorClient & \
+	$(JAVA) -Djava.security.policy=policy.all CalculatorClient & \
+	$(JAVA) -Djava.security.policy=policy.all CalculatorClient
 
 # Clean up compiled files
 clean:
 	rm -f *.class
 
 # Phony targets
-.PHONY: all registry server client multiclients clean
+.PHONY: all check_files registry server client multiclients clean
