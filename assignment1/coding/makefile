@@ -1,49 +1,62 @@
-# Makefile for Java RMI Calculator Assignment
+# Makefile for Java RMI Stack Calculator
+# Files: Calculator.java, CalculatorImplementation.java, CalculatorServer.java,
+#        CalculatorClient.java, MultiClientTest.java
 
-# Variables
-JAVAC = javac
-JAVA = java
-JFLAGS = -g
-SOURCES = Calculator.java CalculatorImplementation.java CalculatorServer.java CalculatorClient.java
-CLASSES = $(SOURCES:.java=.class)
+JAVAC := javac
+JAVA  := java
 
-# Default target: compile all Java files
-all: check_files $(CLASSES)
+SRC := Calculator.java CalculatorImplementation.java CalculatorServer.java CalculatorClient.java MultiClientTest.java
+CLASSES := $(SRC:.java=.class)
 
-# Check if all source files exist
-check_files:
-	@for src in $(SOURCES); do \
-		if [ ! -f "$$src" ]; then \
-			echo "Error: Source file $$src not found"; \
-			exit 1; \
-		fi; \
-	done
+# -------------------------------------------------------
+# Default: compile all classes
+# -------------------------------------------------------
+all: $(CLASSES)
 
-# Rule to compile .java files to .class files
 %.class: %.java
-	$(JAVAC) $(JFLAGS) $<
+	$(JAVAC) $<
 
-# Run the RMI registry
-registry:
-	rmiregistry &
+# -------------------------------------------------------
+# Run targets
+# -------------------------------------------------------
 
-# Run the server
-server: $(CLASSES)
-	$(JAVA) -Djava.security.policy=policy.all CalculatorServer &
+# Start server (creates RMI registry internally via LocateRegistry.createRegistry(1099))
+server: all
+	$(JAVA) CalculatorServer
 
 # Run a single client
-client: $(CLASSES)
-	$(JAVA) -Djava.security.policy=policy.all CalculatorClient
+client: all
+	$(JAVA) CalculatorClient
 
-# Run multiple clients for testing
-multiclients: $(CLASSES)
-	$(JAVA) -Djava.security.policy=policy.all CalculatorClient & \
-	$(JAVA) -Djava.security.policy=policy.all CalculatorClient & \
-	$(JAVA) -Djava.security.policy=policy.all CalculatorClient
+# Run the multi-client test (your MultiClientTest main)
+multiclient: all
+	$(JAVA) MultiClientTest
 
-# Clean up compiled files
+# (Optional) Start a standalone rmiregistry if you prefer the classic flow
+# Usually NOT needed because the server already starts the registry.
+rmiregistry:
+	rmiregistry 1099
+
+# -------------------------------------------------------
+# Utilities
+# -------------------------------------------------------
 clean:
 	rm -f *.class
 
-# Phony targets
-.PHONY: all check_files registry server client multiclients clean
+re: clean all
+
+# Small self-doc
+help:
+	@echo "Targets:"
+	@echo "  make            - Compile all .java files"
+	@echo "  make server     - Run CalculatorServer (starts registry internally)"
+	@echo "  make client     - Run CalculatorClient"
+	@echo "  make multiclient- Run MultiClientTest"
+	@echo "  make rmiregistry- (Optional) start rmiregistry on port 1099"
+	@echo "  make clean      - Remove .class files"
+	@echo "  make re         - Clean and rebuild"
+	@echo ""
+	@echo "Typical flow:"
+	@echo "  1) make server"
+	@echo "  2) (new terminal) make client"
+	@echo "  3) (optional)     make multiclient"
