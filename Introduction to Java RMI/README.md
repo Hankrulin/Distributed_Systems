@@ -1,4 +1,4 @@
-# Assignment 1 - Java RMI Calculator
+# Java RMI Calculator
 
 ## Overview
 This project implements a distributed calculator using Java Remote Method Invocation (RMI). The calculator maintains a shared stack of integers on the server side, allowing clients to perform operations such as pushing values, applying aggregate operations which are min, max, gcd, lcm on the entire stack, popping values, checking if the stack is empty, and performing delayed pops. 
