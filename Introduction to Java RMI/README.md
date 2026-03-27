@@ -24,10 +24,13 @@ The project demonstrates core distributed systems concepts, including remote int
   Consumes all values in the stack, applies the specified operation (`min`, `max`, `gcd`, or `lcm`), and pushes the result back onto the stack.
   operation function:
   
-  -- `for min` - push the min value of all the popped values;
-  -- `for max` - push the max value of all the popped values
-  -- `for lcm` - push the least common multiple of all the popped values;
-  -- `for gcd` - push the greatest common divisor of all the popped values.
+  for `min` - push the min value of all the popped values;
+
+  for `max` - push the max value of all the popped values
+
+  for `lcm` - push the least common multiple of all the popped values;
+
+  for `gcd` - push the greatest common divisor of all the popped values.
 
 - `pop()`  
   Removes and returns the top value from the stack.
