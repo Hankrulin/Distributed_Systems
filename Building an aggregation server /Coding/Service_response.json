@@ -1,0 +1,37 @@
+{
+  "request_id": "req_20250901_000123",
+  "recipes": [
+    {
+      "recipe_id": "r_8f3a12",
+      "title": "Garlic Chicken & Broccoli Stir-fry",
+      "ingredients_used": [
+        {"name": "Chicken Breast", "qty_g": 250},
+        {"name": "Broccoli", "qty_g": 150},
+        {"name": "Garlic", "qty_g": 10}
+      ],
+      "instructions": [
+        "Slice chicken breast thinly.",
+        "Heat oil in a pan and sauté garlic until fragrant.",
+        "Add chicken, cook until no longer pink.",
+        "Add broccoli and stir-fry until tender-crisp.",
+        "Season to taste and serve hot."
+      ],
+      "estimated_time_min": 20
+    },
+    {
+      "recipe_id": "r_b72c90",
+      "title": "Roasted Chicken & Broccoli Tray Bake",
+      "ingredients_used": [
+        {"name": "Chicken Breast", "qty_g": 300},
+        {"name": "Broccoli", "qty_g": 150},
+        {"name": "Garlic", "qty_g": 8}
+      ],
+      "instructions": [
+        "Preheat oven to 200°C.",
+        "Toss chicken and broccoli with oil, salt, pepper, and minced garlic.",
+        "Bake for 18–22 minutes until cooked through."
+      ],
+      "estimated_time_min": 25
+    }
+  ]
+}

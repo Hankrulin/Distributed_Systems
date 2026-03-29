@@ -1,0 +1,14 @@
+{
+  "user": {
+    "username": "hank_lin",
+    "email": "hank@example.com",
+    "preferences": {
+      "diet": ["low_carb", "high_protein"],
+      "allergies": ["peanut", "shellfish"]
+    }
+  },
+  "ingredients": [
+    { "name": "Chicken Breast", "qty_g": 300 },
+    { "name": "Broccoli", "qty_g": 150 }
+  ]
+}

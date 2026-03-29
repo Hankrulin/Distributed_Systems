@@ -1,0 +1,20 @@
+{
+  "user": {
+    "username": "hank_lin",
+    "email": "hank@example.com"
+  },
+  "recipe_feedback": {
+    "recipe_id": "r_8f3a12",
+    "recipe_text": {
+      "title": "Garlic Chicken & Broccoli Stir-fry (tweaked)",
+      "instructions": [
+        "Slice chicken breast thinly and marinate with soy sauce 10 minutes.",
+        "Sauté garlic in oil, add chicken and cook until almost done.",
+        "Add broccoli and a splash of water; stir-fry 2–3 minutes.",
+        "Finish with sesame oil."
+      ]
+    },
+    "rating": 9,
+    "notes": "Added a bit of soy and sesame oil; turned out great!"
+  }
+}
